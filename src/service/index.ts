@@ -1,5 +1,5 @@
 /* eslint-disable */
-export interface DB_Table_Service {
+export interface DBService {
   getOne(id: string): Promise<any>
   getAll(): Promise<any[]>
   createOne(payload: any): Promise<any>

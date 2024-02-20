@@ -1,11 +1,11 @@
-import { DB_Table_Service } from '.'
+import { DBService } from '.'
 import { supabase } from '../config/supabase'
 import { PacientePayload, PacienteResponse } from '../types/paciente'
 
 export const SELECTED_ROWS_PACIENT =
   'id, nombres, apellidos, dni, direccion, nacimiento, telefono, sexo, email'
 
-export default class PacienteService implements DB_Table_Service {
+export default class PacienteService implements DBService {
   async getOne(id: string): Promise<PacienteResponse | null> {
     const { data: pacientes, error } = await supabase
       .from('paciente')

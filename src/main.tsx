@@ -8,7 +8,13 @@ import AppRoutes from './routes/AppRoutes'
 // const listaDoctores = await DB.doctor.getAll()
 // const doctorCreado = await DB.doctor.createOne(doctorExample)
 
-// console.log(doctorCreado)
+// DBManager.getInstance().doctor.getOne('1')
+
+// Ejemplo de uso
+import DB from './db/index.ts'
+const doctores = await DB.doctor.getAll()
+
+console.log(doctores)
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

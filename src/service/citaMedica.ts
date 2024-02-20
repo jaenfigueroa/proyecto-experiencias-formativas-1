@@ -1,8 +1,8 @@
-import { DB_Table_Service } from '.'
+import { DBService } from '.'
 import { supabase } from '../config/supabase'
 import { CitaMedicaPayload, CitaMedicaResponse } from '../types/citaMedica'
 
-export default class CitaMedicaService implements DB_Table_Service {
+export default class CitaMedicaService implements DBService {
   async getOne(id: string): Promise<CitaMedicaResponse> {
     const { data: citasMedicas, error } = await supabase
       .from('cita_medica')

@@ -1,8 +1,8 @@
-import { DB_Table_Service } from '.'
+import { DBService } from '.'
 import { supabase } from '../config/supabase'
 import { SucursalPayload, SucursalResponse } from '../types/sucursal'
 
-export default class SucursalService implements DB_Table_Service {
+export default class SucursalService implements DBService {
   async getOne(id: string): Promise<SucursalResponse> {
     const { data: sucursales, error } = await supabase
       .from('sucursal')
