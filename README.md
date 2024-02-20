@@ -1,1 +1,2 @@
-[Tareas del proyecto](https://github.com/users/jaenfigueroa/projects/9/views/1)
+- [Tareas pendientes/en progreso/terminados del proyecto](https://github.com/users/jaenfigueroa/projects/9/views/1)
+- [Link del despliegue del proyecto](https://jaenfigueroa.github.io/proyecto-experiencias-formativas-1/)
