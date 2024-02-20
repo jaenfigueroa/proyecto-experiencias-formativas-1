@@ -33,3 +33,9 @@ export const estados_cita: string[] = [
   'Cancelada',
   'Completada',
 ]
+
+export const tiposCitaMedica: string[] = [
+  'Presencial',
+  'Videoconsulta/Telemedicina',
+  'Médico a domicilio',
+]

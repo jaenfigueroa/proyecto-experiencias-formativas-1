@@ -9,7 +9,7 @@ export interface Doctor extends Usuario {
   sociedades?: string[]
 }
 
-export type DoctorPayload = Partial<Omit<Doctor, 'id' | 'created_at' | ''>>
+export type DoctorPayload = Partial<Omit<Doctor, 'id' | 'created_at'>>
 export type DoctorResponse = Pick<
   Doctor,
   | 'id'

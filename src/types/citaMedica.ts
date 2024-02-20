@@ -7,6 +7,7 @@ export interface CitaMedica {
   estado: string
   sucursal: string
   archivos_adjuntos?: string[]
+  tipo: string
   created_at: Date
 }
 

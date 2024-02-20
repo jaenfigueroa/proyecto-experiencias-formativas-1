@@ -1,5 +1,5 @@
 import { fakerES as faker } from '@faker-js/faker'
-import { cargos, especialidades, estados_cita } from './others'
+import { cargos, especialidades, estados_cita, tiposCitaMedica } from './others'
 import { Paciente } from '../types/paciente'
 import { Doctor } from '../types/doctor'
 import { Sucursal } from '../types/sucursal'
@@ -14,7 +14,7 @@ export const pacienteExample: Omit<Paciente, 'id' | 'created_at'> = {
   email: faker.internet.email(),
   telefono: faker.phone.number(),
   direccion: faker.location.streetAddress(true),
-  contrasena: faker.internet.password(),
+  // contrasena: faker.internet.password(),
 }
 
 export const doctorExample: Omit<Doctor, 'id' | 'created_at'> = {
@@ -41,5 +41,6 @@ export const citaMedicaExample: Omit<CitaMedica, 'id' | 'created_at'> = {
   especialidad: faker.helpers.arrayElement(especialidades),
   estado: faker.helpers.arrayElement(estados_cita),
   sucursal: faker.number.int({ min: 1, max: 2 }).toString(),
+  tipo: faker.helpers.arrayElement(tiposCitaMedica),
   // archivos_adjuntos: string[]
 }
