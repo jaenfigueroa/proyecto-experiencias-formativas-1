@@ -1,5 +1,5 @@
-import { DBService } from '.'
-import { supabase } from '../config/supabase'
+import DBService from '../db/DBService'
+import supabase from '../config/supabase'
 import { PacientePayload, PacienteResponse } from '../types/paciente'
 
 export const SELECTED_ROWS_PACIENT =

@@ -2,7 +2,7 @@ import DoctorService from '../service/doctorService'
 import PacienteService from '../service/pacienteService'
 import SucursalService from '../service/sucursalService'
 import CitaMedicaService from '../service/citaMedica'
-import { DBService } from '../service'
+import DBService from './DBService'
 
 class DBManager {
   private static instance: DBManager

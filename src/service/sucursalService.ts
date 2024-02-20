@@ -1,5 +1,5 @@
-import { DBService } from '.'
-import { supabase } from '../config/supabase'
+import DBService from '../db/DBService'
+import supabase from '../config/supabase'
 import { SucursalPayload, SucursalResponse } from '../types/sucursal'
 
 export default class SucursalService implements DBService {

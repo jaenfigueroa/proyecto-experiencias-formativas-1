@@ -1,5 +1,5 @@
-import { DBService } from '.'
-import { supabase } from '../config/supabase'
+import supabase from '../config/supabase'
+import DBService from '../db/DBService'
 import { CitaMedicaPayload, CitaMedicaResponse } from '../types/citaMedica'
 
 export default class CitaMedicaService implements DBService {
