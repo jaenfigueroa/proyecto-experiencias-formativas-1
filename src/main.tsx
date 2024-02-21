@@ -5,9 +5,9 @@ import AppRoutes from './routes/AppRoutes'
 
 // Ejemplo de uso de DB
 // import DB from './db/index.ts'
-// const doctores = await DB.sucursal.getAll()
-
-// console.log(doctores)
+// import { doctorExample } from './examples/index.tsx'
+// const paciente = await DB.doctor.createOne(doctorExample)
+// console.log(paciente)
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
