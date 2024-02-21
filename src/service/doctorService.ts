@@ -24,10 +24,11 @@ export default class DoctorService implements DBService {
     return doctor
   }
 
-  async getAll(): Promise<DoctorResponse[]> {
+  async getMany(offset: number, limit: number): Promise<DoctorResponse[]> {
     const { data: doctores, error } = await supabase
       .from('doctor')
       .select(SELECTED_ROWS_DOCTOR)
+      .range(offset, limit + offset - 1)
 
     if (error) {
       console.log(error)

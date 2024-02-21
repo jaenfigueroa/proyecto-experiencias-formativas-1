@@ -24,10 +24,11 @@ export default class PacienteService implements DBService {
     return paciente
   }
 
-  async getAll(): Promise<PacienteResponse[]> {
+  async getMany(offset: number, limit: number): Promise<PacienteResponse[]> {
     const { data: pacientes, error } = await supabase
       .from('paciente')
       .select(SELECTED_ROWS_PACIENT)
+      .range(offset, limit + offset - 1)
 
     if (error) {
       console.log(error)

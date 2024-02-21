@@ -8,6 +8,5 @@ export interface Usuario {
   email: string
   telefono: string
   direccion: string
-  // contrasena: string
   created_at: Date
 }

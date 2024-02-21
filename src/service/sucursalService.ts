@@ -21,10 +21,11 @@ export default class SucursalService implements DBService {
     return sucursal
   }
 
-  async getAll(): Promise<SucursalResponse[]> {
+  async getMany(offset: number, limit: number): Promise<SucursalResponse[]> {
     const { data: sucursals, error } = await supabase
       .from('sucursal')
       .select('*')
+      .range(offset, limit + offset - 1)
 
     if (error) {
       console.log(error)

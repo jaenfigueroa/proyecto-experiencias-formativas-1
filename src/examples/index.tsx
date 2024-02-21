@@ -5,19 +5,28 @@ import { Doctor } from '../types/doctor'
 import { Sucursal } from '../types/sucursal'
 import { CitaMedica } from '../types/citaMedica'
 
-export const pacienteExample: Omit<Paciente, 'id' | 'created_at'> = {
+type Template<T> = Omit<T, 'id' | 'created_at'>
+
+const sex = faker.person.sex() as 'male' | 'female'
+const nombres = faker.person.firstName(sex)
+const apellidos = faker.person.lastName()
+const email = faker.internet.exampleEmail({
+  firstName: nombres,
+  lastName: apellidos,
+})
+
+export const pacienteExample: Template<Paciente> = {
   dni: faker.number.int({ min: 20000000, max: 90000000 }),
-  sexo: faker.person.sex(),
-  nombres: faker.person.firstName(),
-  apellidos: faker.person.lastName(),
+  sexo: sex,
+  nombres: nombres,
+  apellidos: apellidos,
   nacimiento: faker.date.birthdate({ min: 18, max: 65, mode: 'age' }),
-  email: faker.internet.email(),
+  email: email,
   telefono: faker.phone.number(),
   direccion: faker.location.streetAddress(true),
-  // contrasena: faker.internet.password(),
 }
 
-export const doctorExample: Omit<Doctor, 'id' | 'created_at'> = {
+export const doctorExample: Template<Doctor> = {
   ...pacienteExample,
   centro_medico: faker.number.int({ min: 1, max: 2 }).toString(),
   especialidad: faker.helpers.arrayElement(especialidades),
@@ -27,14 +36,14 @@ export const doctorExample: Omit<Doctor, 'id' | 'created_at'> = {
   // sociedades: string[]
 }
 
-export const sucursalExample: Omit<Sucursal, 'id' | 'created_at'> = {
+export const sucursalExample: Template<Sucursal> = {
   nombre: 'CENTRO MEDICO DE LA COLINA',
   direccion: faker.location.streetAddress(true),
   telefono: faker.phone.number(),
   ubicacion_mapa: faker.location.nearbyGPSCoordinate(),
 }
 
-export const citaMedicaExample: Omit<CitaMedica, 'id' | 'created_at'> = {
+export const citaMedicaExample: Template<CitaMedica> = {
   paciente: faker.number.int({ min: 1, max: 2 }).toString(),
   doctor: faker.number.int({ min: 1, max: 2 }).toString(),
   fecha: faker.date.birthdate({ min: 2024, max: 2027, mode: 'year' }),
