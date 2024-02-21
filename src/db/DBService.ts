@@ -1,10 +1,9 @@
-/* eslint-disable */
 interface DBService {
-  getOne(id: string): Promise<any>
-  getAll(): Promise<any[]>
-  createOne(payload: any): Promise<any>
+  getOne(id: string): Promise<unknown>
+  getAll(): Promise<unknown[]>
+  createOne(payload: unknown): Promise<unknown>
   deleteOne(id: string): Promise<void>
-  updateOne(id: string, payload: any): Promise<any>
+  updateOne(id: string, payload: unknown): Promise<unknown>
 }
 
 export default DBService
