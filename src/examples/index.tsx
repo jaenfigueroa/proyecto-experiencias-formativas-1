@@ -24,6 +24,7 @@ export const pacienteExample: Template<Paciente> = {
   email: email,
   telefono: faker.phone.number(),
   direccion: faker.location.streetAddress(true),
+  ubicacion_mapa: faker.location.nearbyGPSCoordinate(),
 }
 
 export const doctorExample: Template<Doctor> = {

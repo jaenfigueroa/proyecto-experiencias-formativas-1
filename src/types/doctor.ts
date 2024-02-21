@@ -10,21 +10,4 @@ export interface Doctor extends Usuario {
 }
 
 export type DoctorPayload = Partial<Omit<Doctor, 'id' | 'created_at'>>
-export type DoctorResponse = Pick<
-  Doctor,
-  | 'id'
-  | 'nombres'
-  | 'apellidos'
-  | 'dni'
-  | 'direccion'
-  | 'nacimiento'
-  | 'telefono'
-  | 'sexo'
-  | 'email'
-  | 'centro_medico'
-  | 'cargo'
-  | 'especialidad'
-  | 'titulo_medico'
-  | 'premios_honores'
-  | 'sociedades'
->
+export type DoctorResponse = Doctor
