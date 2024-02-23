@@ -6,8 +6,9 @@ import { v4 as uuid } from 'uuid'
 import Registro from '../pages/Registro'
 import InicioSesion from '../pages/InicioSesion'
 import { SnackbarProvider } from 'notistack'
-import RestorePassword from '../pages/RestorePassword'
+import ChangePassword from '../pages/ChangePassword'
 import { useAuth } from '../auth/useAuth'
+import SolicitarCambioContrasena from '../pages/SolicitarCambioContrasena'
 
 const routesPublic = [
   {
@@ -19,8 +20,8 @@ const routesPublic = [
     element: <InicioSesion />,
   },
   {
-    path: '/restablecerContrasena',
-    element: <RestorePassword />,
+    path: '/solicitarCambioContrasena',
+    element: <SolicitarCambioContrasena />,
   },
 ]
 
@@ -28,6 +29,10 @@ const routesPrivate = [
   {
     path: '/dashboard',
     element: <Dashboard />,
+  },
+  {
+    path: '/cambiarContrasena',
+    element: <ChangePassword />,
   },
 ]
 

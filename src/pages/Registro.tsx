@@ -22,19 +22,17 @@ const Registro = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(formData)
-    const { data, error } = await registrarse(formData)
-    console.log(data)
+    const { error } = await registrarse(formData)
 
     if (error) {
       enqueueSnackbar(
         'Ocrrio un error al enviar el correo de verificación, intenta de nuevo.',
-        { variant: 'error', autoHideDuration: 3000 },
+        { variant: 'error', autoHideDuration: 2000 },
       )
     } else {
       enqueueSnackbar(
         'Te hemos enviado un enlace de verificación a tu correo electrónico',
-        { variant: 'success', autoHideDuration: 3000 },
+        { variant: 'success', autoHideDuration: 2000 },
       )
     }
   }

@@ -31,14 +31,14 @@ const InicioSesion = () => {
     if (error) {
       enqueueSnackbar('Error al iniciar sesión', {
         variant: 'error',
-        autoHideDuration: 3000,
+        autoHideDuration: 2000,
       })
     } else {
       setUser(true)
       navigate('/dashboard')
       enqueueSnackbar('Inicio de sesión exitoso', {
         variant: 'success',
-        autoHideDuration: 3000,
+        autoHideDuration: 2000,
       })
     }
   }
@@ -72,13 +72,12 @@ const InicioSesion = () => {
           variant='outlined'
           size='small'
           type='password'
-          value={formData.contrasena}
           onChange={handleChange}
           autoComplete='current-password'
         />
 
         <Typography variant='body2'>
-          <Link to='/restablecerContrasena'>
+          <Link to='/solicitarCambioContrasena'>
             Solicitar cambiar de contraseña
           </Link>
         </Typography>

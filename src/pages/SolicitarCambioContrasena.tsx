@@ -2,9 +2,9 @@ import { Box, Button, InputLabel, TextField, Typography } from '@mui/material'
 import { useState } from 'react'
 import RegisterLayout from '../layouts/RegisterLayout'
 import { useSnackbar } from 'notistack'
-import { restablecerContrasena } from '../auth'
+import { solicitarCambioContrasena } from '../auth'
 
-const RestorePassword = () => {
+const SolicitarCambioContrasena = () => {
   const { enqueueSnackbar } = useSnackbar()
 
   const [formData, setFormData] = useState({
@@ -21,25 +21,28 @@ const RestorePassword = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const { error } = await restablecerContrasena(formData)
+    const { error } = await solicitarCambioContrasena(formData)
 
     if (error) {
-      enqueueSnackbar('Error al restablecer contraseña', {
+      enqueueSnackbar('Error al solicitar cambio de contraseña', {
         variant: 'error',
-        autoHideDuration: 3000,
+        autoHideDuration: 2000,
       })
     } else {
-      enqueueSnackbar('Te enviamos un corre para cambiar tu contraseña', {
-        variant: 'success',
-        autoHideDuration: 3000,
-      })
+      enqueueSnackbar(
+        'Te enviamos un correo para que puedas cambiar tu contraseña',
+        {
+          variant: 'success',
+          autoHideDuration: 2000,
+        },
+      )
     }
   }
 
   return (
     <RegisterLayout>
       <Typography variant='h2' textAlign={'center'} mb={4}>
-        Cambiar contraseña
+        Solicitar cambio de contraseña
       </Typography>
       <Box
         display='flex'
@@ -59,11 +62,11 @@ const RestorePassword = () => {
           autoComplete='email'
         />
         <Button variant='contained' type='submit'>
-          Solicitar cambiar contrsseña
+          Enviar correo
         </Button>
       </Box>
     </RegisterLayout>
   )
 }
 
-export default RestorePassword
+export default SolicitarCambioContrasena

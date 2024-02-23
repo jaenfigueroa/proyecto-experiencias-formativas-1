@@ -17,7 +17,7 @@ const Header = () => {
       navigate('/')
       enqueueSnackbar('Se cerró sesión correctamente', {
         variant: 'success',
-        autoHideDuration: 3000,
+        autoHideDuration: 2000,
       })
     }
   }

@@ -29,20 +29,33 @@ export const cerrarSesion = async () => {
   return { error }
 }
 
-export const restablecerContrasena = async (payload: { correo: string }) => {
+export const recuperarUsuario = async () => {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+  return user
+}
+
+export const solicitarCambioContrasena = async (payload: {
+  correo: string
+}) => {
   const { data, error } = await supabase.auth.resetPasswordForEmail(
     payload.correo,
     {
-      redirectTo: 'https://example.com/update-password',
+      redirectTo:
+        'https://jaenfigueroa.github.io/proyecto-experiencias-formativas-1/#cambiarContrasena',
     },
   )
 
   return { data, error }
 }
 
-export const recuperarUsuario = async () => {
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-  return user
+export const actualizarContrasena = async (payload: {
+  newContrasena: string
+}) => {
+  const { data, error } = await supabase.auth.updateUser({
+    password: payload.newContrasena,
+  })
+
+  return { data, error }
 }
