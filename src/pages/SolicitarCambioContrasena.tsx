@@ -41,7 +41,7 @@ const SolicitarCambioContrasena = () => {
 
   return (
     <RegisterLayout>
-      <Typography variant='h2' textAlign={'center'} mb={4}>
+      <Typography variant='h3' textAlign={'center'} mb={4}>
         Solicitar cambio de contraseña
       </Typography>
       <Box

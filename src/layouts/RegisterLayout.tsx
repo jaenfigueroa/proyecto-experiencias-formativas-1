@@ -1,28 +1,38 @@
 import { PropsWithChildren } from 'react'
-// import Logo from '../components/Logo'
-// import AmbulanciaUrgente from '../components/AmbulanciaUrgente'
 import Header from '../components/Header'
 import { Box, Paper } from '@mui/material'
+// import fondo from '/fondo.jpg'
 
 const RegisterLayout = ({ children }: PropsWithChildren) => {
   return (
     <Box minHeight={'100vh'} display={'flex'} flexDirection={'column'}>
-      {/* <Logo /> */}
       <Header />
 
-      <Paper
-        elevation={3}
+      {/* <img
+        src={fondo}
+        alt='imagen del dia'
+        style={{ width: '100%', position: 'fixed', top: 0 }}
+      /> */}
+
+      <Box
         sx={{
-          width: '100%',
-          maxWidth: '450px',
           margin: 'auto',
-          padding: '16px',
-          borderRadius: '8px',
+          padding: '2rem',
+          width: '100%',
+          maxWidth: '500px',
+          zIndex: 1,
         }}
       >
-        <Box p={4}>{children}</Box>
-      </Paper>
-      {/* <AmbulanciaUrgente /> */}
+        <Paper
+          elevation={2}
+          sx={{
+            borderRadius: '8px',
+            padding: '2rem',
+          }}
+        >
+          {children}
+        </Paper>
+      </Box>
     </Box>
   )
 }
