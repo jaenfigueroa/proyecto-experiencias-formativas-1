@@ -40,7 +40,7 @@ export default class CitaMedicaService implements DBService {
   }
 
   async createOne(payload: CitaMedicaPayload): Promise<CitaMedicaResponse> {
-    const { data: citasMedicas, error } = await supabase
+    const { data: doctores, error } = await supabase
       .from('cita_medica')
       .insert([{ ...payload }])
       .select('*')
@@ -49,13 +49,11 @@ export default class CitaMedicaService implements DBService {
       console.log(error)
     }
 
-    if (!citasMedicas || citasMedicas.length === 0) {
-      throw new Error(
-        'No se encontró ningúna cita medica con el ID proporcionado',
-      )
+    if (!doctores || doctores.length === 0) {
+      throw new Error('No se encontró ')
     }
 
-    return citasMedicas[0] as CitaMedicaResponse
+    return doctores[0] as CitaMedicaResponse
   }
 
   async deleteOne(id: string): Promise<void> {

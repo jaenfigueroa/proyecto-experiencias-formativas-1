@@ -9,5 +9,5 @@ export interface Usuario {
   email: string
   telefono: string
   direccion: string
-  ubicacion_mapa: [latitud: number, longitud: number]
+  tipo_usuario: string
 }

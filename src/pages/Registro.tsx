@@ -76,7 +76,7 @@ const Registro = () => {
 
   return (
     <RegisterLayout>
-      <Typography variant='h2' textAlign={'center'} mb={4}>
+      <Typography variant='h3' textAlign={'center'} mb={4}>
         Registrate
       </Typography>
       <Box
@@ -177,10 +177,6 @@ const Registro = () => {
           onChange={inputChange}
           autoComplete='current-password'
         />
-
-        {/*  */}
-
-        {/*  */}
 
         <Button variant='contained' type='submit'>
           Registrate

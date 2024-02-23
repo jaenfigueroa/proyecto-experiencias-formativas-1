@@ -24,7 +24,7 @@ export const pacienteExample: Template<Paciente> = {
   email: email,
   telefono: faker.phone.number(),
   direccion: faker.location.streetAddress(true),
-  ubicacion_mapa: faker.location.nearbyGPSCoordinate(),
+  tipo_usuario: 'paciente',
 }
 
 export const doctorExample: Template<Doctor> = {
@@ -32,6 +32,7 @@ export const doctorExample: Template<Doctor> = {
   centro_medico: faker.number.int({ min: 1, max: 2 }).toString(),
   especialidad: faker.helpers.arrayElement(especialidades),
   cargo: faker.helpers.arrayElement(cargos),
+  tipo_usuario: 'doctor',
   // titulo_medico: string[]
   // premios_honores: string[]
   // sociedades: string[]
@@ -44,13 +45,16 @@ export const sucursalExample: Template<Sucursal> = {
   ubicacion_mapa: faker.location.nearbyGPSCoordinate(),
 }
 
-export const citaMedicaExample: Template<CitaMedica> = {
-  paciente_id: faker.number.int({ min: 1, max: 2 }).toString(),
-  doctor_id: faker.number.int({ min: 1, max: 2 }).toString(),
-  sucursal_id: faker.number.int({ min: 1, max: 2 }).toString(),
+export const citaMedicaExample: Omit<
+  CitaMedica,
+  'id' | 'created_at' | 'paciente_id'
+> = {
+  // paciente_id: faker.number.int({ min: 1, max: 2 }).toString(),
+  doctor_id: faker.string.uuid(),
+  sucursal_id: faker.string.uuid(),
   fecha: faker.date.birthdate({ min: 2024, max: 2027, mode: 'year' }),
   especialidad: faker.helpers.arrayElement(especialidades),
   estado: faker.helpers.arrayElement(estados_cita),
-  tipo: faker.helpers.arrayElement(tiposCitaMedica),
+  tipo_cita: faker.helpers.arrayElement(tiposCitaMedica),
   // archivos_adjuntos: string[]
 }

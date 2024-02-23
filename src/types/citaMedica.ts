@@ -8,7 +8,7 @@ export interface CitaMedica {
   especialidad: string
   estado: string
   archivos_adjuntos?: string[]
-  tipo: string
+  tipo_cita: string
 }
 
 export type CitaMedicaPayload = Partial<Omit<CitaMedica, 'id' | 'created_at'>>

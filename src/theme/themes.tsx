@@ -16,7 +16,4 @@ export const THEME_LIGHT: Theme = responsiveFontSizes(
     },
     esES,
   ),
-  {
-    factor: 5,
-  },
 )
