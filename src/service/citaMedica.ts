@@ -23,10 +23,11 @@ export default class CitaMedicaService implements DBService {
     return citaMedica
   }
 
-  async getAll(): Promise<CitaMedicaResponse[]> {
+  async getMany(offset: number, limit: number): Promise<CitaMedicaResponse[]> {
     const { data: citasMedicas, error } = await supabase
       .from('cita_medica')
       .select('*')
+      .range(offset, limit + offset - 1)
 
     if (error) {
       console.log(error)

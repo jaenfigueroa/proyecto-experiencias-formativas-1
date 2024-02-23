@@ -8,6 +8,6 @@ export interface Usuario {
   email: string
   telefono: string
   direccion: string
-  // contrasena: string
+  ubicacion_mapa: [latitud: number, longitud: number]
   created_at: Date
 }

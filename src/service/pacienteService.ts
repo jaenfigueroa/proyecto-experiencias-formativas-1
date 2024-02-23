@@ -2,14 +2,11 @@ import DBService from '../db/DBService'
 import supabase from '../config/supabase'
 import { PacientePayload, PacienteResponse } from '../types/paciente'
 
-export const SELECTED_ROWS_PACIENT =
-  'id, nombres, apellidos, dni, direccion, nacimiento, telefono, sexo, email'
-
 export default class PacienteService implements DBService {
   async getOne(id: string): Promise<PacienteResponse | null> {
     const { data: pacientes, error } = await supabase
       .from('paciente')
-      .select(SELECTED_ROWS_PACIENT)
+      .select('*')
       .eq('id', id)
 
     if (error) {
@@ -24,10 +21,11 @@ export default class PacienteService implements DBService {
     return paciente
   }
 
-  async getAll(): Promise<PacienteResponse[]> {
+  async getMany(offset: number, limit: number): Promise<PacienteResponse[]> {
     const { data: pacientes, error } = await supabase
       .from('paciente')
-      .select(SELECTED_ROWS_PACIENT)
+      .select('*')
+      .range(offset, limit + offset - 1)
 
     if (error) {
       console.log(error)
@@ -40,7 +38,7 @@ export default class PacienteService implements DBService {
     const { data: pacientes, error } = await supabase
       .from('paciente')
       .insert([{ ...payload }])
-      .select(SELECTED_ROWS_PACIENT)
+      .select('*')
 
     if (error) {
       console.log(error)
@@ -69,7 +67,7 @@ export default class PacienteService implements DBService {
       .from('paciente')
       .update({ ...payload })
       .eq('id', id)
-      .select(SELECTED_ROWS_PACIENT)
+      .select('*')
 
     if (error) {
       console.log(error)
