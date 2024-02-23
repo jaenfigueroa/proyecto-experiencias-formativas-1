@@ -1,5 +1,6 @@
 import { Button, Typography } from '@mui/material'
 import HomeLayout from '../layouts/HomeLayout'
+import { Link } from 'react-router-dom'
 
 const NotFound = () => {
   return (
@@ -7,7 +8,9 @@ const NotFound = () => {
       <>
         <Typography variant='h2'>404</Typography>
         <Typography variant='subtitle1'>Ups, esta pagina no existe</Typography>
-        <Button variant='contained'>VOlver al inicio</Button>
+        <Link to='/'>
+          <Button variant='contained'>Volver al inicio</Button>
+        </Link>
       </>
     </HomeLayout>
   )

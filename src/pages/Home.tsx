@@ -5,6 +5,7 @@ const Home = () => {
   return (
     <Box>
       <Header />
+      Pagina principal
     </Box>
   )
 }

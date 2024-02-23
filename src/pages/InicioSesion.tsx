@@ -3,9 +3,13 @@ import { useState } from 'react'
 import { iniciarSesion } from '../auth'
 import RegisterLayout from '../layouts/RegisterLayout'
 import { useSnackbar } from 'notistack'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../auth/useAuth'
 
 const InicioSesion = () => {
   const { enqueueSnackbar } = useSnackbar()
+  const { setUser } = useAuth()
+  const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
     correo: '',
@@ -30,6 +34,8 @@ const InicioSesion = () => {
         autoHideDuration: 3000,
       })
     } else {
+      setUser(true)
+      navigate('/dashboard')
       enqueueSnackbar('Inicio de sesión exitoso', {
         variant: 'success',
         autoHideDuration: 3000,
@@ -39,14 +45,13 @@ const InicioSesion = () => {
 
   return (
     <RegisterLayout>
-      <Typography variant='h1' textAlign={'center'}>
-        Inicia sesión
+      <Typography variant='h2' textAlign={'center'} mb={4}>
+        Iniciar sesión
       </Typography>
       <Box
         display='flex'
         flexDirection='column'
         gap={2}
-        p={4}
         component={'form'}
         onSubmit={handleSubmit}
       >
@@ -72,9 +77,19 @@ const InicioSesion = () => {
           autoComplete='current-password'
         />
 
+        <Typography variant='body2'>
+          <Link to='/restablecerContrasena'>
+            Solicitar cambiar de contraseña
+          </Link>
+        </Typography>
+
         <Button variant='contained' type='submit'>
           Iniciar sesión
         </Button>
+
+        <Typography variant='body2' textAlign={'center'}>
+          ¿Aún no tienes una cuenta? <Link to='/registrate'>Registrate</Link>
+        </Typography>
       </Box>
     </RegisterLayout>
   )

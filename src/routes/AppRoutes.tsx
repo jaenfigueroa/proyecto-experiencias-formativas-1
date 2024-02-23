@@ -6,12 +6,10 @@ import { v4 as uuid } from 'uuid'
 import Registro from '../pages/Registro'
 import InicioSesion from '../pages/InicioSesion'
 import { SnackbarProvider } from 'notistack'
+import RestorePassword from '../pages/RestorePassword'
+import { useAuth } from '../auth/useAuth'
 
-const routes = [
-  {
-    path: '/',
-    element: <Home />,
-  },
+const routesPublic = [
   {
     path: '/registrate',
     element: <Registro />,
@@ -21,23 +19,34 @@ const routes = [
     element: <InicioSesion />,
   },
   {
+    path: '/restablecerContrasena',
+    element: <RestorePassword />,
+  },
+]
+
+const routesPrivate = [
+  {
     path: '/dashboard',
     element: <Dashboard />,
-  },
-  {
-    path: '*',
-    element: <NotFound />,
   },
 ]
 
 const AppRoutes = () => {
+  const { user } = useAuth()
+
   return (
     <SnackbarProvider maxSnack={3}>
       <HashRouter>
         <Routes>
-          {routes.map((route) => (
-            <Route path={route.path} element={route.element} key={uuid()} />
-          ))}
+          {user
+            ? routesPrivate.map((route) => (
+                <Route path={route.path} element={route.element} key={uuid()} />
+              ))
+            : routesPublic.map((route) => (
+                <Route path={route.path} element={route.element} key={uuid()} />
+              ))}
+          <Route path='/' element={<Home />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </HashRouter>
     </SnackbarProvider>

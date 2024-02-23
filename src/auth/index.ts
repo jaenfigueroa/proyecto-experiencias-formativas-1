@@ -28,3 +28,21 @@ export const cerrarSesion = async () => {
 
   return { error }
 }
+
+export const restablecerContrasena = async (payload: { correo: string }) => {
+  const { data, error } = await supabase.auth.resetPasswordForEmail(
+    payload.correo,
+    {
+      redirectTo: 'https://example.com/update-password',
+    },
+  )
+
+  return { data, error }
+}
+
+export const recuperarUsuario = async () => {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+  return user
+}
