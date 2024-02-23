@@ -3,7 +3,7 @@ import HomeLayout from '../layouts/HomeLayout'
 const Dashboard = () => {
   return (
     <HomeLayout>
-      <div>pagina principal</div>
+      <div>Dashboard</div>
     </HomeLayout>
   )
 }

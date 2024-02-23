@@ -35,7 +35,7 @@ const InicioSesion = () => {
       })
     } else {
       setUser(true)
-      navigate('/dashboard')
+      navigate('/')
       enqueueSnackbar('Inicio de sesión exitoso', {
         variant: 'success',
         autoHideDuration: 2000,

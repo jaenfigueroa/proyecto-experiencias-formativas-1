@@ -1,12 +1,27 @@
 import supabase from '../config/supabase'
 
-export const registrarse = async (paypload: {
+export interface RegisterFormData {
   correo: string
   contrasena: string
-}) => {
+
+  dni: string
+  sexo: string
+  nombres: string
+  telefono: string
+  apellidos: string
+  direccion: string
+  fechaNacimiento: string
+}
+
+export const registrarse = async (paypload: RegisterFormData) => {
+  const { correo, contrasena, ...others } = paypload
+
   const { data, error } = await supabase.auth.signUp({
-    email: paypload.correo,
-    password: paypload.contrasena,
+    email: correo,
+    password: contrasena,
+    options: {
+      data: { ...others },
+    },
   })
 
   return { data, error }

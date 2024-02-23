@@ -1,12 +1,10 @@
-import { Box } from '@mui/material'
-import Header from '../components/Header'
+import HomeLayout from '../layouts/HomeLayout'
 
 const Home = () => {
   return (
-    <Box>
-      <Header />
-      Pagina principal
-    </Box>
+    <HomeLayout>
+      <p>Home</p>
+    </HomeLayout>
   )
 }
 
