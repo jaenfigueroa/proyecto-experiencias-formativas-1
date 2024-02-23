@@ -45,12 +45,12 @@ export const sucursalExample: Template<Sucursal> = {
 }
 
 export const citaMedicaExample: Template<CitaMedica> = {
-  paciente: faker.number.int({ min: 1, max: 2 }).toString(),
-  doctor: faker.number.int({ min: 1, max: 2 }).toString(),
+  paciente_id: faker.number.int({ min: 1, max: 2 }).toString(),
+  doctor_id: faker.number.int({ min: 1, max: 2 }).toString(),
+  sucursal_id: faker.number.int({ min: 1, max: 2 }).toString(),
   fecha: faker.date.birthdate({ min: 2024, max: 2027, mode: 'year' }),
   especialidad: faker.helpers.arrayElement(especialidades),
   estado: faker.helpers.arrayElement(estados_cita),
-  sucursal: faker.number.int({ min: 1, max: 2 }).toString(),
   tipo: faker.helpers.arrayElement(tiposCitaMedica),
   // archivos_adjuntos: string[]
 }

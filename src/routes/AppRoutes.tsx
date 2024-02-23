@@ -3,8 +3,9 @@ import Home from '../pages/Home'
 import NotFound from '../pages/NotFound'
 import Dashboard from '../pages/Dashboard'
 import { v4 as uuid } from 'uuid'
-import Register from '../pages/Register'
-import Login from '../pages/Login'
+import Registro from '../pages/Registro'
+import InicioSesion from '../pages/InicioSesion'
+import { SnackbarProvider } from 'notistack'
 
 const routes = [
   {
@@ -12,12 +13,12 @@ const routes = [
     element: <Home />,
   },
   {
-    path: '/register',
-    element: <Register />,
+    path: '/registrate',
+    element: <Registro />,
   },
   {
-    path: '/login',
-    element: <Login />,
+    path: '/iniciarSesion',
+    element: <InicioSesion />,
   },
   {
     path: '/dashboard',
@@ -31,13 +32,15 @@ const routes = [
 
 const AppRoutes = () => {
   return (
-    <HashRouter>
-      <Routes>
-        {routes.map((route) => (
-          <Route path={route.path} element={route.element} key={uuid()} />
-        ))}
-      </Routes>
-    </HashRouter>
+    <SnackbarProvider maxSnack={3}>
+      <HashRouter>
+        <Routes>
+          {routes.map((route) => (
+            <Route path={route.path} element={route.element} key={uuid()} />
+          ))}
+        </Routes>
+      </HashRouter>
+    </SnackbarProvider>
   )
 }
 

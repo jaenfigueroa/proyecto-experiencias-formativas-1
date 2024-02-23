@@ -1,13 +1,15 @@
 import { PropsWithChildren } from 'react'
-import Logo from '../components/Logo'
-import AmbulanciaUrgente from '../components/AmbulanciaUrgente'
+// import Logo from '../components/Logo'
+// import AmbulanciaUrgente from '../components/AmbulanciaUrgente'
+import Header from '../components/Header'
 
 const RegisterLayout = ({ children }: PropsWithChildren) => {
   return (
     <>
-      <Logo />
+      {/* <Logo /> */}
+      <Header />
       {children}
-      <AmbulanciaUrgente />
+      {/* <AmbulanciaUrgente /> */}
     </>
   )
 }
