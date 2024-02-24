@@ -60,7 +60,7 @@ const ChangePassword = () => {
           autoComplete='email'
         />
         <Button variant='contained' type='submit'>
-          Listo
+          Guardar
         </Button>
       </Box>
     </RegisterLayout>

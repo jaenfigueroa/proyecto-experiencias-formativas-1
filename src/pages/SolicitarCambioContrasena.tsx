@@ -30,7 +30,7 @@ const SolicitarCambioContrasena = () => {
       })
     } else {
       enqueueSnackbar(
-        'Te enviamos un correo para que puedas cambiar tu contraseña',
+        'Si tu correo esta registrado te enviaremos un enlace para cambiar tu contraseña, revisa tu buzon de entrada o spam.',
         {
           variant: 'success',
           autoHideDuration: 2000,
