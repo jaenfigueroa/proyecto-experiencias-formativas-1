@@ -1,43 +1,61 @@
 import { HashRouter, Routes, Route } from 'react-router-dom'
 import Home from '../pages/Home'
-import NotFound from '../pages/NotFound'
 import Dashboard from '../pages/Dashboard'
 import { v4 as uuid } from 'uuid'
-import Register from '../pages/Register'
-import Login from '../pages/Login'
+import Registro from '../pages/Registro'
+import InicioSesion from '../pages/InicioSesion'
+import { SnackbarProvider } from 'notistack'
+import ChangePassword from '../pages/ChangePassword'
+import { useAuth } from '../auth/useAuth'
+import SolicitarCambioContrasena from '../pages/SolicitarCambioContrasena'
 
-const routes = [
+const routesPublic = [
   {
-    path: '/',
+    path: '*',
     element: <Home />,
   },
   {
-    path: '/register',
-    element: <Register />,
+    path: '/registrate',
+    element: <Registro />,
   },
   {
-    path: '/login',
-    element: <Login />,
+    path: '/iniciarSesion',
+    element: <InicioSesion />,
   },
   {
-    path: '/dashboard',
+    path: '/solicitarCambioContrasena',
+    element: <SolicitarCambioContrasena />,
+  },
+]
+
+const routesPrivate = [
+  {
+    path: '*',
     element: <Dashboard />,
   },
   {
-    path: '*',
-    element: <NotFound />,
+    path: '/cambiarContrasena',
+    element: <ChangePassword />,
   },
 ]
 
 const AppRoutes = () => {
+  const { isAuthenticated } = useAuth()
+
   return (
-    <HashRouter>
-      <Routes>
-        {routes.map((route) => (
-          <Route path={route.path} element={route.element} key={uuid()} />
-        ))}
-      </Routes>
-    </HashRouter>
+    <SnackbarProvider maxSnack={3}>
+      <HashRouter>
+        <Routes>
+          {isAuthenticated
+            ? routesPrivate.map((route) => (
+                <Route path={route.path} element={route.element} key={uuid()} />
+              ))
+            : routesPublic.map((route) => (
+                <Route path={route.path} element={route.element} key={uuid()} />
+              ))}
+        </Routes>
+      </HashRouter>
+    </SnackbarProvider>
   )
 }
 

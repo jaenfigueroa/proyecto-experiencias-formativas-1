@@ -1,14 +1,14 @@
 export interface CitaMedica {
   id: string
-  paciente: string
-  doctor: string
+  created_at: Date
+  paciente_id: string
+  doctor_id: string
+  sucursal_id: string
   fecha: Date
   especialidad: string
   estado: string
-  sucursal: string
   archivos_adjuntos?: string[]
-  tipo: string
-  created_at: Date
+  tipo_cita: string
 }
 
 export type CitaMedicaPayload = Partial<Omit<CitaMedica, 'id' | 'created_at'>>
