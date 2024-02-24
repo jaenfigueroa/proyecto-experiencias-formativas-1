@@ -30,6 +30,9 @@ jobs:
         run: echo "GITHUB_ACTIONS=true" >> $GITHUB_ENV
 
       - name: Instalar dependencias y construir el dist
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_KEY: ${{ secrets.VITE_SUPABASE_KEY }}
         working-directory: ./src
         run: |
           pnpm install
