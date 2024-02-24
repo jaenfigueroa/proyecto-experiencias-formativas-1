@@ -7,16 +7,21 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
 import Tooltip from '@mui/material/Tooltip'
-import Logout from '@mui/icons-material/Logout'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth/useAuth'
-import { useSnackbar } from 'notistack'
-import { cerrarSesion } from '../auth'
 import NotificationsIcon from '@mui/icons-material/Notifications'
+import KeyIcon from '@mui/icons-material/Key'
+import EditIcon from '@mui/icons-material/Edit'
+import EventIcon from '@mui/icons-material/Event'
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital'
+import MoreTimeIcon from '@mui/icons-material/MoreTime'
+import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork'
+import CerrarSesion from './CerrarSesion'
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
   }
@@ -24,22 +29,8 @@ export default function AccountMenu() {
     setAnchorEl(null)
   }
 
-  const { enqueueSnackbar } = useSnackbar()
-  const { setIsAuthenticated, user } = useAuth()
+  const { user } = useAuth()
   const navigate = useNavigate()
-
-  const onLogOut = async () => {
-    const { error } = await cerrarSesion()
-
-    if (!error) {
-      setIsAuthenticated(false)
-      navigate('/')
-      enqueueSnackbar('Se cerró sesión correctamente', {
-        variant: 'success',
-        autoHideDuration: 2000,
-      })
-    }
-  }
 
   return (
     <React.Fragment>
@@ -66,7 +57,7 @@ export default function AccountMenu() {
         id='account-menu'
         open={open}
         onClose={handleClose}
-        onClick={handleClose}
+        // onClick={handleClose}
         PaperProps={{
           elevation: 0,
           sx: {
@@ -100,18 +91,63 @@ export default function AccountMenu() {
           <Avatar /> {user}
         </MenuItem>
         <Divider />
-        {/* <MenuItem onClick={handleClose}>
+
+        <MenuItem onClick={() => navigate('/reservarCita')}>
           <ListItemIcon>
-            <NotificationsIcon />
+            <MoreTimeIcon />
           </ListItemIcon>
-          Mis notificaciones
+          Reservar nueva cita
+        </MenuItem>
+        <MenuItem onClick={() => navigate('/misCitas')}>
+          <ListItemIcon>
+            <EventIcon />
+          </ListItemIcon>
+          Mis citas médicas
+        </MenuItem>
+        <MenuItem onClick={() => navigate('/doctoresFavoritos')}>
+          <ListItemIcon>
+            <LocalHospitalIcon />
+          </ListItemIcon>
+          Doctores favoritos
+        </MenuItem>
+        <Divider />
+        <MenuItem onClick={() => navigate('/verSucursales')}>
+          <ListItemIcon>
+            <MapsHomeWorkIcon />
+          </ListItemIcon>
+          Ver sucursales
+        </MenuItem>
+        <Divider />
+        <MenuItem onClick={() => navigate('/editarPerfil')}>
+          <ListItemIcon>
+            <EditIcon />
+          </ListItemIcon>
+          Actualizar mis datos personales
+        </MenuItem>
+
+        <MenuItem onClick={() => navigate('/cambiarContrasena')}>
+          <ListItemIcon>
+            <KeyIcon />
+          </ListItemIcon>
+          Cambiar mi contraseña
+        </MenuItem>
+
+        {/* <MenuItem onClick={() => navigate('/editarPerfil')}>
+          <ListItemIcon>
+            <DeleteIcon />
+          </ListItemIcon>
+          Eliminar mi perfil
         </MenuItem> */}
-        <MenuItem onClick={onLogOut}>
+        <Divider />
+
+        {/* <MenuItem onClick={onLogOut}>
           <ListItemIcon>
             <Logout />
           </ListItemIcon>
           Cerrar sesión
-        </MenuItem>
+        </MenuItem> */}
+
+        <CerrarSesion />
       </Menu>
     </React.Fragment>
   )
