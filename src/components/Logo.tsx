@@ -1,10 +1,11 @@
-import { Box } from '@mui/material'
+import logo from '/logo.png'
+import style from './logo.module.css'
 
 const Logo = () => {
   return (
-    <Box width={200} height={200} sx={{ background: 'skyblue' }}>
-      Logo
-    </Box>
+    <div className={style.logoContainer}>
+      <img src={logo} className={style.logo} />
+    </div>
   )
 }
 

@@ -1,0 +1,13 @@
+.logoContainer {
+  width: 200px;
+}
+.logo {
+  aspect-ratio: 1/1;
+  width: 100%;
+}
+
+@media (width > 950px) {
+  .logoContainer {
+    width: 300px;
+  }
+}
