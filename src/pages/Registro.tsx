@@ -77,7 +77,7 @@ const Registro = () => {
   return (
     <RegisterLayout>
       <Typography variant='h3' textAlign={'center'} mb={4}>
-        Registrate
+        Regístrate
       </Typography>
       <Box
         display='flex'

@@ -8,7 +8,7 @@ import { useAuth } from '../auth/useAuth'
 
 const InicioSesion = () => {
   const { enqueueSnackbar } = useSnackbar()
-  const { setUser } = useAuth()
+  const { setIsAuthenticated } = useAuth()
   const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
@@ -34,7 +34,7 @@ const InicioSesion = () => {
         autoHideDuration: 2000,
       })
     } else {
-      setUser(true)
+      setIsAuthenticated(true)
       navigate('/')
       enqueueSnackbar('Inicio de sesión exitoso', {
         variant: 'success',

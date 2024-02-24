@@ -1,28 +1,11 @@
 import { Box, Button, Paper } from '@mui/material'
-import { Link, useNavigate } from 'react-router-dom'
-import { cerrarSesion } from '../auth'
-import { useSnackbar } from 'notistack'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../auth/useAuth'
 import logo from '/logo-small.png'
+import AccountMenu from './AccountMenu'
 
 const Header = () => {
-  const { enqueueSnackbar } = useSnackbar()
-  const { setUser } = useAuth()
-  const navigate = useNavigate()
-
-  const onLogOut = async () => {
-    const { error } = await cerrarSesion()
-
-    if (!error) {
-      setUser(false)
-      navigate('/')
-      enqueueSnackbar('Se cerró sesión correctamente', {
-        variant: 'success',
-        autoHideDuration: 2000,
-      })
-    }
-  }
-  const { user } = useAuth()
+  const { isAuthenticated } = useAuth()
 
   return (
     <Paper elevation={1} style={{ zIndex: 2 }}>
@@ -36,10 +19,8 @@ const Header = () => {
         </Link>
 
         <Box display='flex' gap={2}>
-          {user ? (
-            <Button variant='outlined' onClick={onLogOut}>
-              Cerrar sesión
-            </Button>
+          {isAuthenticated ? (
+            <AccountMenu />
           ) : (
             <>
               <Link to='/iniciarSesion'>

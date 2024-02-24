@@ -10,7 +10,7 @@ export const THEME_LIGHT: Theme = responsiveFontSizes(
           main: '#3f51b5',
         },
         secondary: {
-          main: '#f50057',
+          main: '#036e68',
         },
       },
     },

@@ -40,13 +40,13 @@ const routesPrivate = [
 ]
 
 const AppRoutes = () => {
-  const { user } = useAuth()
+  const { isAuthenticated } = useAuth()
 
   return (
     <SnackbarProvider maxSnack={3}>
       <HashRouter>
         <Routes>
-          {user
+          {isAuthenticated
             ? routesPrivate.map((route) => (
                 <Route path={route.path} element={route.element} key={uuid()} />
               ))

@@ -13,8 +13,10 @@ type Props = {
 }
 
 interface IAppContext {
-  user: boolean
-  setUser: Dispatch<SetStateAction<boolean>>
+  isAuthenticated: boolean
+  setIsAuthenticated: Dispatch<SetStateAction<boolean>>
+  user: string
+  setUser: Dispatch<SetStateAction<string>>
 }
 
 // AuthContext
@@ -22,22 +24,27 @@ export const AuthContext = createContext<IAppContext>({} as IAppContext)
 
 // AuthProvider
 export const AuthProvider = ({ children }: Props) => {
-  const [user, setUser] = useState<boolean>(false)
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
+  const [user, setUser] = useState<string>('')
 
   useEffect(() => {
     const response = async () => {
       const response = await recuperarUsuario()
-      setUser(!!response)
+      setIsAuthenticated(!!response)
+      const user = `${response?.user_metadata.nombres} ${response?.user_metadata.apellidos}`
+      setUser(user)
     }
     response()
-  }, [user])
+  }, [isAuthenticated])
 
   const sharedData: IAppContext = useMemo(
     () => ({
+      isAuthenticated,
+      setIsAuthenticated,
       user,
       setUser,
     }),
-    [user, setUser],
+    [isAuthenticated, setIsAuthenticated, user, setUser],
   )
 
   return (
